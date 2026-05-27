@@ -1,3 +1,20 @@
+"""
+automate_Agun-Firmansyah.py
+
+Script otomasi preprocessing dataset Breast Cancer Wisconsin (Diagnostic)
+untuk submission MSML.
+
+Tahapan mengikuti notebook Eksperimen_Agun-Firmansyah.ipynb:
+    1. Load data
+    2. Handle missing values
+    3. Hapus duplikat
+    4. Encoding fitur kategorikal & target
+    5. Train-test split + StandardScaler (scaler disimpan untuk inference)
+    6. Simpan hasil ke folder output
+
+Cara pakai:
+    python automate_Agun-Firmansyah.py
+"""
 from __future__ import annotations
 
 import os
@@ -114,13 +131,13 @@ def save_preprocessed(
 
 
 def run_preprocessing(
-    input_path: str = "../iris_raw/iris.csv",
-    output_dir: str = "iris_preprocessing",
-    target_col: str = "species",
+    input_path: str = "../breast_cancer_raw/breast_cancer.csv",
+    output_dir: str = "breast_cancer_preprocessing",
+    target_col: str = "diagnosis_label",
 ) -> None:
     """Pipeline preprocessing end-to-end."""
     print("=" * 60)
-    print("Memulai preprocessing otomatis dataset Iris...")
+    print("Memulai preprocessing otomatis dataset Breast Cancer...")
     print("=" * 60)
 
     df = load_data(input_path)
@@ -139,7 +156,7 @@ def run_preprocessing(
 
 if __name__ == "__main__":
     run_preprocessing(
-        input_path="../iris_raw/iris.csv",
-        output_dir="iris_preprocessing",
-        target_col="species",
+        input_path="../breast_cancer_raw/breast_cancer.csv",
+        output_dir="breast_cancer_preprocessing",
+        target_col="diagnosis_label",
     )
